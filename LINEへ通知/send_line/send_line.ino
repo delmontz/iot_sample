@@ -2,10 +2,10 @@
 
 WiFiClientSecure clientSecure;
 
-char ssid[] = "家のSSID";
-char pass[] = "ネットのパスワード";
-String mes = "LINEへの通知メッセージ";
-String token = "アクセストークン";
+char ssid[] = "家のSSID";               //適時変更
+char pass[] = "ネットのパスワード";      //適時変更
+String mes = "LINEへの通知メッセージ";   //LINEへ通知したい内容
+String token = "アクセストークン";       //LINE notifyで取得したアクセストークン
 
 void setup() {
   Serial.begin(74880);
