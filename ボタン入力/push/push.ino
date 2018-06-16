@@ -1,4 +1,4 @@
-byte ledPin = 14;　//LEDを繋げたIO番号、適時変更してください
+byte ledPin = 14; //LEDを繋げたIO番号、適時変更してください
 byte buttonPin = 16;  //スイッチを繋げたIO番号
 
 void setup() {
