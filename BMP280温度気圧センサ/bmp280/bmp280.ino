@@ -1,25 +1,36 @@
-#include <Adafruit_BMP280.h>
+#include "Seeed_BMP280.h"
+#include <Wire.h>
 
-Adafruit_BMP280 bme; // I2C
-  
-void setup() {
-    Serial.begin(9600);
-    bme.begin();
+/* ライブラリ宣言 */
+BMP280 bmp280;
+
+void setup()
+{
+  Serial.begin(74880);
+  if(!bmp280.init()){
+    Serial.println("デバイスエラー!?");
+  }
 }
+
+void loop()
+{
+  /* 気温表示 */
+  Serial.print("気温: ");
+  Serial.print(bmp280.getTemperature());
+  Serial.println("℃");
   
-void loop() {
-    Serial.print("Temperature = ");
-    Serial.print(bme.readTemperature());
-    Serial.println(" *C");
+  /* 気圧表示 */
+  float pressure;
+  Serial.print("気圧: ");
+  Serial.print(pressure = bmp280.getPressure());
+  Serial.println("Pa");
+  
+ /* 高度表示 */
+  Serial.print("高度: ");
+  Serial.print(bmp280.calcAltitude(pressure));
+  Serial.println("m");
 
-    Serial.print("Pressure = ");
-    Serial.print(bme.readPressure());
-    Serial.println(" Pa");
+  Serial.println("================================");
 
-    Serial.print("Approx altitude = ");
-    Serial.print(bme.readAltitude(1013.25)); // this should be adjusted to your local forcase
-    Serial.println(" m");
-
-    Serial.println();
-    delay(2000);
+  delay(1000);
 }
