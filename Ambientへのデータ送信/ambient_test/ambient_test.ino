@@ -49,5 +49,5 @@ void loop() {
   
   /* シリアルモニタに気温表示 */
   Serial.println(temp);
-  delay(1000);
+  delay(5500);
 }
